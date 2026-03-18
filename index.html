@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Prices, Charts And Market Capitalizations | GenLayer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+        .text-cmc-blue { color: #3861fb; }
+        .bg-cmc-blue { background-color: #3861fb; }
+        .sticky-table-head { position: sticky; top: 113px; background: white; z-index: 10; border-bottom: 2px solid #eff2f5; }
+        .global-stats span { font-weight: 600; color: #3861fb; cursor: pointer; }
+        .table-row:hover { background-color: #f8fafd; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="border-b border-gray-100 py-2 text-[11px] text-gray-500 hidden lg:block">
+        <div class="max-w-[1400px] mx-auto px-4 flex justify-between items-center global-stats uppercase font-medium">
+            <div class="flex space-x-4">
+                <p>Cryptos: <span>2.4M+</span></p>
+                <p>Exchanges: <span>742</span></p>
+                <p>Market Cap: <span>$2.56T</span></p>
+                <p>24h Vol: <span>$84.2B</span></p>
+                <p>Dominance: <span>BTC: 52.4% ETH: 16.8%</span></p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <p><i class="fas fa-gas-pump mr-1"></i> ETH Gas: <span>12 Gwei</span></p>
+                <div class="border-l h-3 border-gray-300 mx-1"></div>
+                <p>English <i class="fas fa-caret-down"></i></p>
+                <p>USD <i class="fas fa-caret-down"></i></p>
+            </div>
+        </div>
+    </div>
+
+    <header class="border-b border-gray-200 sticky top-0 bg-white z-50">
+        <div class="max-w-[1400px] mx-auto px-4 h-[70px] flex justify-between items-center">
+            <div class="flex items-center space-x-8">
+                <div class="text-2xl font-bold text-gray-900 flex items-center tracking-tight">
+                    <div class="bg-cmc-blue text-white p-1.5 rounded-lg mr-2 leading-none">
+                        <i class="fas fa-layer-group text-lg"></i>
+                    </div>
+                    GenLayer
+                </div>
+                <nav class="hidden xl:flex space-x-5 text-[15px] font-bold text-gray-800">
+                    <a href="#" class="hover:text-cmc-blue">Cryptocurrencies</a>
+                    <a href="#" class="hover:text-cmc-blue">Exchanges</a>
+                    <a href="#" class="hover:text-cmc-blue">Community</a>
+                    <a href="#" class="hover:text-cmc-blue">Products</a>
+                    <a href="#" class="hover:text-cmc-blue">Learn</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="hidden lg:flex items-center text-sm font-bold text-gray-500 space-x-4">
+                    <span><i class="fas fa-star mr-1"></i> Watchlist</span>
+                    <span><i class="fas fa-chart-pie mr-1"></i> Portfolio</span>
+                </div>
+                <div class="relative hidden md:block">
+                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    <input type="text" placeholder="Search" class="bg-gray-100 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none w-64 border border-transparent focus:border-cmc-blue">
+                </div>
+                <button class="bg-cmc-blue text-white px-5 py-2.5 rounded-xl font-bold text-sm">Sign Up</button>
+            </div>
+        </div>
+        
+        <div class="max-w-[1400px] mx-auto px-4 h-12 flex items-center justify-between text-xs font-bold text-gray-500 overflow-x-auto hide-scrollbar">
+            <div class="flex space-x-6 whitespace-nowrap items-center">
+                <span class="text-cmc-blue border-b-2 border-cmc-blue py-3">Cryptocurrencies</span>
+                <span class="hover:text-cmc-blue cursor-pointer">Categories</span>
+                <span class="hover:text-cmc-blue cursor-pointer">Solana Ecosystem</span>
+                <span class="hover:text-cmc-blue cursor-pointer">AI Tokens</span>
+                <span class="hover:text-cmc-blue cursor-pointer">Memes</span>
+            </div>
+            <div class="flex items-center space-x-2 ml-4">
+                <span class="bg-gray-100 px-3 py-1.5 rounded-lg">Show rows: 100</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1400px] mx-auto px-4 mt-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+            <div>
+                <h1 class="text-2xl font-bold">Today's Cryptocurrency Prices by Market Cap</h1>
+                <p class="text-gray-500 text-sm mt-1 font-medium">The global crypto market cap is <span class="text-gray-900 font-bold">$2.56T</span>, a <span class="text-green-500 font-bold"><i class="fas fa-caret-up"></i> 1.24%</span> increase over the last day.</p>
+            </div>
+            <div class="mt-4 md:mt-0 flex space-x-2">
+                <button class="bg-gray-100 px-3 py-2 rounded-lg text-xs font-bold transition hover:bg-gray-200">Highlights</button>
+                <button class="bg-gray-100 px-3 py-2 rounded-lg text-xs font-bold transition hover:bg-gray-200">Charts</button>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead class="sticky-table-head">
+                    <tr class="text-[12px] font-bold text-gray-800 uppercase border-y border-gray-100">
+                        <th class="py-4 px-2 w-10 text-center"><i class="far fa-star text-gray-400"></i></th>
+                        <th class="py-4 px-2">#</th>
+                        <th class="py-4 px-2">Name</th>
+                        <th class="py-4 px-2 text-right">Price</th>
+                        <th class="py-4 px-2 text-right">1h %</th>
+                        <th class="py-4 px-2 text-right">24h %</th>
+                        <th class="py-4 px-2 text-right">7d %</th>
+                        <th class="py-4 px-2 text-right">Market Cap</th>
+                        <th class="py-4 px-2 text-right">Volume(24h)</th>
+                        <th class="py-4 px-2 text-right w-32">Last 7 Days</th>
+                    </tr>
+                </thead>
+                <tbody id="crypto-table-body" class="divide-y divide-gray-100">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="chartModal" class="fixed inset-0 bg-black bg-opacity-70 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl w-full max-w-5xl h-[80vh] relative overflow-hidden flex flex-col">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h3 id="modalTitle" class="font-bold text-xl">Bitcoin Chart</h3>
+                <button onclick="closeChart()" class="text-gray-400 hover:text-black text-2xl">&times;</button>
+            </div>
+            <div id="tradingview_widget" class="flex-grow"></div>
+        </div>
+    </div>
+
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script>
+        async function fetchMarketData() {
+            try {
+                const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&price_change_percentage=1h,24h,7d');
+                const data = await res.json();
+                renderTable(data);
+            } catch (err) {
+                console.error("Fetch Error:", err);
+            }
+        }
+
+        function renderTable(data) {
+            const tableBody = document.getElementById('crypto-table-body');
+            tableBody.innerHTML = '';
+
+            data.forEach((coin, index) => {
+                const p1h = coin.price_change_percentage_1h_in_currency || 0;
+                const p24h = coin.price_change_percentage_24h_in_currency || 0;
+                const p7d = coin.price_change_percentage_7d_in_currency || 0;
+
+                tableBody.innerHTML += `
+                    <tr class="table-row cursor-pointer transition text-[14px] font-bold border-b border-gray-100" onclick="openChart('${coin.symbol.toUpperCase()}', '${coin.name}')">
+                        <td class="py-6 px-2 text-center text-gray-300 font-normal"><i class="far fa-star hover:text-yellow-400"></i></td>
+                        <td class="py-6 px-2 text-gray-500 font-medium text-[12px]">${index + 1}</td>
+                        <td class="py-6 px-2">
+                            <div class="flex items-center">
+                                <img src="${coin.image}" class="w-6 h-6 mr-2">
+                                <span class="text-gray-900">${coin.name}</span>
+                                <span class="text-gray-400 font-medium uppercase ml-2 text-[12px]">${coin.symbol}</span>
+                            </div>
+                        </td>
+                        <td class="py-6 px-2 text-right font-semibold">$${coin.current_price.toLocaleString()}</td>
+                        <td class="py-6 px-2 text-right ${p1h > 0 ? 'text-green-500' : 'text-red-500'} font-medium">
+                            <i class="fas fa-caret-${p1h > 0 ? 'up' : 'down'} mr-1"></i>${Math.abs(p1h).toFixed(2)}%
+                        </td>
+                        <td class="py-6 px-2 text-right ${p24h > 0 ? 'text-green-500' : 'text-red-500'} font-medium">
+                            <i class="fas fa-caret-${p24h > 0 ? 'up' : 'down'} mr-1"></i>${Math.abs(p24h).toFixed(2)}%
+                        </td>
+                        <td class="py-6 px-2 text-right ${p7d > 0 ? 'text-green-500' : 'text-red-500'} font-medium">
+                            <i class="fas fa-caret-${p7d > 0 ? 'up' : 'down'} mr-1"></i>${Math.abs(p7d).toFixed(2)}%
+                        </td>
+                        <td class="py-6 px-2 text-right text-gray-900 font-medium">$${coin.market_cap.toLocaleString()}</td>
+                        <td class="py-6 px-2 text-right">
+                            <div class="text-gray-900 font-medium">$${coin.total_volume.toLocaleString()}</div>
+                            <div class="text-[11px] text-gray-400 font-normal uppercase">${(coin.total_volume / coin.current_price).toFixed(0)} ${coin.symbol}</div>
+                        </td>
+                        <td class="py-6 px-2 text-right">
+                            <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${p7d > 0 ? '1' : '2'}.svg" class="inline-block brightness-110 filter ${p7d > 0 ? 'hue-rotate-90' : ''}" style="width: 160px; height: 50px;">
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function openChart(symbol, name) {
+            document.getElementById('chartModal').classList.remove('hidden');
+            document.getElementById('modalTitle').innerText = name + " Live Chart";
+            new TradingView.widget({
+                "autosize": true,
+                "symbol": `BINANCE:${symbol}USDT`,
+                "interval": "D",
+                "theme": "light",
+                "style": "1",
+                "locale": "id",
+                "container_id": "tradingview_widget",
+                "hide_side_toolbar": false,
+            });
+        }
+
+        function closeChart() {
+            document.getElementById('chartModal').classList.add('hidden');
+            document.getElementById('tradingview_widget').innerHTML = '';
+        }
+
+        fetchMarketData();
+        setInterval(fetchMarketData, 60000);
+    </script>
+</body>
+</html>
